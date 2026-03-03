@@ -2,7 +2,8 @@
 // Biofloc-based recirculating aquaculture (B-RAS)
 // On-device TSS prediction (linear (simple) + multiple regression)
 // NOTE: Coefficients are dataset-specific. Re-fit for your system and update here or via serial.
-// Robel Kahsu
+// Robel Kahsu from Levintal Lab 
+// The functions and code were adapted and modified from Atlas Scientific, Adafruit, Arduino Modbus libraries, and Blues Notehub documentation.
 
 #include <ModbusMaster.h>
 #include <Notecard.h>
@@ -267,16 +268,4 @@ String convertEpochToTime(unsigned long epochTime) {
   return String(buf);
 }
 
-void printErrorDetails(uint8_t error) {
-  switch (error) {
-    case node.ku8MBIllegalFunction:    Serial.println("Error: Illegal function."); break;
-    case node.ku8MBIllegalDataAddress: Serial.println("Error: Illegal data address."); break;
-    case node.ku8MBIllegalDataValue:   Serial.println("Error: Illegal data value."); break;
-    case node.ku8MBSlaveDeviceFailure: Serial.println("Error: Slave device failure."); break;
-    case node.ku8MBInvalidSlaveID:     Serial.println("Error: Invalid slave ID."); break;
-    case node.ku8MBInvalidFunction:    Serial.println("Error: Invalid function."); break;
-    case node.ku8MBResponseTimedOut:   Serial.println("Error: Response timed out."); break;
-    case node.ku8MBInvalidCRC:         Serial.println("Error: Invalid CRC."); break;
-    default:                           Serial.println("Error: Unknown error."); break;
-  }
-}
+
